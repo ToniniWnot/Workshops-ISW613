@@ -35,9 +35,11 @@ if ($user === false) {
 }
 
 $pageTitle = 'Perfil';
+$activePage = 'profile'; // marca "Mi perfil" como activo en el menú
 require_once __DIR__ . '/common/header.php';
 ?>
 <body>
+  <?php require_once __DIR__ . '/common/navbar.php'; ?>
   <div class="container mt-5">
     <h1 class="text-center">Workshop 3</h1>
     <?php // El nombre sale de la sesión: es lo que guardó actions/login.php al autenticarse ?>
@@ -79,10 +81,6 @@ require_once __DIR__ . '/common/header.php';
               <button type="submit" class="btn btn-primary btn-block">Guardar cambios</button>
             </form>
 
-            <?php // El logout también va por POST para que no se pueda disparar con solo abrir un enlace ?>
-            <form action="/actions/logout.php" method="POST" class="mt-3">
-              <button type="submit" class="btn btn-danger btn-block">Cerrar sesión</button>
-            </form>
           </div>
         </div>
       </div>
