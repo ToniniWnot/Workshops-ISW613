@@ -4,8 +4,8 @@ require_once __DIR__ . '/../utils/database.php';
 
 // Mensajes de error que puede enviar actions/register.php en el parámetro ?error=
 $errorMessages = [
-    'invalid_input' => 'Datos inválidos. El username puede tener hasta 50 caracteres y la contraseña entre 8 y 72.',
-    'username_taken' => 'Ese username ya está en uso. Elige otro.',
+    'invalid_input' => 'Datos inválidos. El usuario puede tener hasta 50 caracteres y la contraseña entre 8 y 72.',
+    'username_taken' => 'Ese usuario ya está en uso. Elige otro.',
     'server_error' => 'No se pudo completar el registro. Inténtalo más tarde.',
 ];
 $errorCode = $_GET['error'] ?? '';

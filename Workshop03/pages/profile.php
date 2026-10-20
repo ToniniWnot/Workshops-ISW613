@@ -66,7 +66,7 @@ require_once __DIR__ . '/common/header.php';
             <?php // Los datos se envían por POST a actions/update_profile.php ?>
             <form action="/actions/update_profile.php" method="POST">
               <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Usuario</label>
                 <input type="text" class="form-control" id="username" name="username" maxlength="50" value="<?php echo htmlspecialchars($user['username']); ?>" required>
               </div>
               <div class="form-group">

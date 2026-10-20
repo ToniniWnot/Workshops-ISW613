@@ -14,7 +14,7 @@ require_once __DIR__ . '/pages/common/header.php';
       <div class="col-md-6">
         <div class="card">
           <div class="card-header text-center">
-            <h4>Login</h4>
+            <h4>Iniciar sesión</h4>
           </div>
           <div class="card-body">
             <?php // actions/login.php nos devuelve aquí con ?error=1 si algo falla ?>
@@ -42,7 +42,7 @@ require_once __DIR__ . '/pages/common/header.php';
                 <label for="password">Contraseña</label>
                 <input type="password" class="form-control" id="password" name="password" required>
               </div>
-              <button type="submit" class="btn btn-primary btn-block">Login</button>
+              <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
             </form>
 
             <p class="text-center mt-3 mb-0">¿No tienes cuenta? <a href="pages/register.php">Regístrate</a></p>
