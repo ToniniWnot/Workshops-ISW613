@@ -16,6 +16,7 @@ $messages = [
     ],
     'error' => [
         'invalid_input' => 'La solicitud no es válida.',
+        'not_found' => 'El curso no existe.',
         'server_error' => 'No se pudo completar la operación. Inténtalo más tarde.',
     ],
 ];
