@@ -4,7 +4,7 @@
 $activePage = $activePage ?? '';
 ?>
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <span class="navbar-brand">Workshop 3</span>
+  <span class="navbar-brand">Workshop 4</span>
 
   <ul class="navbar-nav mr-auto">
     <li class="nav-item<?php echo $activePage === 'profile' ? ' active' : ''; ?>">

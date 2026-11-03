@@ -1,9 +1,9 @@
--- Base de datos del Workshop 3: usuarios, provincias, carreras y cursos.
-CREATE DATABASE IF NOT EXISTS workshop3
+-- Base de datos del Workshop 4: usuarios, provincias, carreras y cursos.
+CREATE DATABASE IF NOT EXISTS workshop4
     DEFAULT CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
-USE workshop3;
+USE workshop4;
 
 -- Catálogo de provincias (dropdown del registro y del perfil)
 CREATE TABLE IF NOT EXISTS provincias (

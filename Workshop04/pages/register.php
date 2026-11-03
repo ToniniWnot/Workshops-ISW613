@@ -26,7 +26,7 @@ require_once __DIR__ . '/common/header.php';
 ?>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Workshop 3</h1>
+    <h1 class="text-center">Workshop 4</h1>
     <p class="text-center">Crea tu cuenta para continuar.</p>
   </div>
 

@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $conn = new PDO('mysql:host=localhost;dbname=workshop3;charset=utf8mb4', 'root', '', [
+    $conn = new PDO('mysql:host=localhost;dbname=workshop4;charset=utf8mb4', 'root', '', [
         // Si una consulta falla, se lanza una excepción en lugar de fallar en silencio
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         // Cada fila llega como arreglo con los nombres de las columnas: $user['username']

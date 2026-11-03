@@ -5,7 +5,7 @@ require_once __DIR__ . '/pages/common/header.php';
 ?>
 <body>
   <div class="container mt-5">
-    <h1 class="text-center">Workshop 3</h1>
+    <h1 class="text-center">Workshop 4</h1>
     <p class="text-center">Inicia sesión para ver tu perfil.</p>
   </div>
 

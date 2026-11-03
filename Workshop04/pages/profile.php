@@ -41,7 +41,7 @@ require_once __DIR__ . '/common/header.php';
 <body>
   <?php require_once __DIR__ . '/common/navbar.php'; ?>
   <div class="container mt-5">
-    <h1 class="text-center">Workshop 3</h1>
+    <h1 class="text-center">Workshop 4</h1>
     <?php // El nombre sale de la sesión: es lo que guardó actions/login.php al autenticarse ?>
     <p class="text-center">Sesión iniciada como <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong></p>
   </div>

@@ -1,4 +1,4 @@
-# Workshop 3 - Gestión de cursos (PHP + MySQL)
+# Workshop 4 - Gestión de cursos (PHP + MySQL)
 
 ## Descripción
 Aplicación web con registro, login por sesión, perfil y una sección **Cursos** donde un usuario
@@ -15,9 +15,9 @@ HTML, Bootstrap 4.5.2 (CDN), PHP 8.2, Apache 2.4 (XAMPP), MariaDB/MySQL, PDO.
 
 ## Estructura del proyecto
 ```
-Workshop03/
+Workshop04/
 ├── index.php                  Login
-├── workshop3.sql              Base de datos completa (tablas y datos iniciales)
+├── workshop4.sql              Base de datos completa (tablas y datos iniciales)
 ├── actions/                   Scripts que procesan formularios y redirigen
 │   ├── login.php, logout.php, register.php, update_profile.php
 │   ├── create_course.php
@@ -38,7 +38,7 @@ Workshop03/
 ```
 
 ## Base de datos
-Base de datos `workshop3`, creada con `workshop3.sql` (incluye 4 carreras y 3 cursos de ejemplo).
+Base de datos `workshop4`, creada con `workshop4.sql` (incluye 4 carreras y 3 cursos de ejemplo).
 
 **cursos**
 

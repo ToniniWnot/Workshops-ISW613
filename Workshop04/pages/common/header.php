@@ -1,7 +1,7 @@
 <?php
 // Cabecera común de todas las páginas: abre <html> y <head> y carga Bootstrap.
 // Cada página define $pageTitle antes de incluir este archivo; si no lo hace, usa el título por defecto.
-$pageTitle = $pageTitle ?? 'Workshop 3';
+$pageTitle = $pageTitle ?? 'Workshop 4';
 ?>
 <!DOCTYPE html>
 <html lang="es">
