@@ -1,28 +1,7 @@
 <?php
-// Pantalla de registro: formulario con username, contraseña y provincia.
-require_once __DIR__ . '/../utils/database.php';
-
-// Mensajes de error que puede enviar actions/register.php en el parámetro ?error=
-$errorMessages = [
-    'invalid_input' => 'Datos inválidos. El usuario puede tener hasta 50 caracteres y la contraseña entre 8 y 72.',
-    'username_taken' => 'Ese usuario ya está en uso. Elige otro.',
-    'server_error' => 'No se pudo completar el registro. Inténtalo más tarde.',
-];
-$errorCode = $_GET['error'] ?? '';
-// Solo mostramos mensajes de la lista (nunca texto que venga de la URL) y descartamos valores que no sean texto
-$errorMessage = is_string($errorCode) ? ($errorMessages[$errorCode] ?? null) : null;
-
-// Provincias que llenan el dropdown
-try {
-    $provincias = $conn->query('SELECT id, nombre FROM provincias ORDER BY nombre')->fetchAll();
-} catch (PDOException $exception) {
-    error_log('Register provinces error: ' . $exception->getMessage());
-    $provincias = [];
-    $errorMessage = $errorMessage ?? 'No se pudieron cargar las provincias. Inténtalo más tarde.';
-}
-
+// Vista del registro: solo HTML. El controlador le entrega $errorMessage y $provincias.
 $pageTitle = 'Registro';
-require_once __DIR__ . '/common/header.php';
+require_once __DIR__ . '/../layouts/header.php';
 ?>
 <body>
   <div class="container mt-5">
@@ -39,7 +18,7 @@ require_once __DIR__ . '/common/header.php';
           </div>
           <div class="card-body">
             <?php if ($errorMessage !== null): ?>
-              <div class="alert alert-danger text-center"><?php echo htmlspecialchars($errorMessage); ?></div>
+              <div class="alert alert-danger text-center"><?php echo e($errorMessage); ?></div>
             <?php endif; ?>
 
             <?php // Los datos se envían por POST a actions/register.php ?>
@@ -58,7 +37,7 @@ require_once __DIR__ . '/common/header.php';
                 <select class="form-control" id="provincia_id" name="provincia_id" required>
                   <option value="" disabled selected>Selecciona tu provincia</option>
                   <?php foreach ($provincias as $provincia): ?>
-                    <option value="<?php echo (int) $provincia['id']; ?>"><?php echo htmlspecialchars($provincia['nombre']); ?></option>
+                    <option value="<?php echo (int) $provincia['id']; ?>"><?php echo e($provincia['nombre']); ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -71,4 +50,4 @@ require_once __DIR__ . '/common/header.php';
       </div>
     </div>
   </div>
-<?php require_once __DIR__ . '/common/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

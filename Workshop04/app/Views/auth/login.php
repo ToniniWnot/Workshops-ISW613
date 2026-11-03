@@ -1,7 +1,7 @@
 <?php
-// Pantalla de login: es la página de inicio del sitio.
+// Vista del login: solo HTML. El controlador le entrega $error, $registered y $expired.
 $pageTitle = 'Iniciar sesión';
-require_once __DIR__ . '/pages/common/header.php';
+require_once __DIR__ . '/../layouts/header.php';
 ?>
 <body>
   <div class="container mt-5">
@@ -18,17 +18,17 @@ require_once __DIR__ . '/pages/common/header.php';
           </div>
           <div class="card-body">
             <?php // actions/login.php nos devuelve aquí con ?error=1 si algo falla ?>
-            <?php if (isset($_GET['error'])): ?>
+            <?php if ($error): ?>
               <div class="alert alert-danger text-center">Credenciales inválidas</div>
             <?php endif; ?>
 
             <?php // actions/register.php nos devuelve aquí con ?registered=1 si el registro salió bien ?>
-            <?php if (isset($_GET['registered'])): ?>
+            <?php if ($registered): ?>
               <div class="alert alert-success text-center">Registro exitoso. Ya puedes iniciar sesión.</div>
             <?php endif; ?>
 
             <?php // utils/auth.php nos devuelve aquí con ?expired=1 si la sesión caducó por inactividad ?>
-            <?php if (isset($_GET['expired'])): ?>
+            <?php if ($expired): ?>
               <div class="alert alert-warning text-center">Tu sesión expiró por inactividad. Inicia sesión de nuevo.</div>
             <?php endif; ?>
 
@@ -51,4 +51,4 @@ require_once __DIR__ . '/pages/common/header.php';
       </div>
     </div>
   </div>
-<?php require_once __DIR__ . '/pages/common/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -1,46 +1,11 @@
 <?php
-// Listado de cursos: solo accesible con una sesión válida y activa.
-require_once __DIR__ . '/../utils/auth.php';
-require_once __DIR__ . '/../utils/database.php';
-require_once __DIR__ . '/../utils/courses.php';
-
-// Si no hay sesión (o caducó), requireLogin() redirige al login y no se ejecuta nada más
-requireLogin();
-
-// Mensajes que pueden enviar las acciones de cursos en los parámetros ?success= y ?error=
-$messages = [
-    'success' => [
-        'created' => 'El curso se creó correctamente.',
-        'updated' => 'El curso se actualizó correctamente.',
-        'deleted' => 'El curso se eliminó correctamente.',
-    ],
-    'error' => [
-        'invalid_input' => 'La solicitud no es válida.',
-        'not_found' => 'El curso no existe.',
-        'server_error' => 'No se pudo completar la operación. Inténtalo más tarde.',
-    ],
-];
-
-// Solo mostramos mensajes de la lista (nunca texto que venga de la URL)
-$successCode = $_GET['success'] ?? '';
-$errorCode = $_GET['error'] ?? '';
-$successMessage = is_string($successCode) ? ($messages['success'][$successCode] ?? null) : null;
-$errorMessage = is_string($errorCode) ? ($messages['error'][$errorCode] ?? null) : null;
-
-try {
-    $courses = getCourses($conn);
-} catch (PDOException $exception) {
-    error_log('Courses list error: ' . $exception->getMessage());
-    http_response_code(500);
-    exit('No se pudieron cargar los cursos. Inténtalo más tarde.');
-}
-
+// Vista del listado de cursos: solo HTML. El controlador le entrega $courses, $successMessage y $errorMessage.
 $pageTitle = 'Cursos';
 $activePage = 'courses'; // marca "Cursos" como activo en el menú
-require_once __DIR__ . '/common/header.php';
+require_once __DIR__ . '/../layouts/header.php';
 ?>
 <body>
-  <?php require_once __DIR__ . '/common/navbar.php'; ?>
+  <?php require_once __DIR__ . '/../layouts/navbar.php'; ?>
 
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -49,10 +14,10 @@ require_once __DIR__ . '/common/header.php';
     </div>
 
     <?php if ($successMessage !== null): ?>
-      <div class="alert alert-success"><?php echo htmlspecialchars($successMessage); ?></div>
+      <div class="alert alert-success"><?php echo e($successMessage); ?></div>
     <?php endif; ?>
     <?php if ($errorMessage !== null): ?>
-      <div class="alert alert-danger"><?php echo htmlspecialchars($errorMessage); ?></div>
+      <div class="alert alert-danger"><?php echo e($errorMessage); ?></div>
     <?php endif; ?>
 
     <div class="table-responsive">
@@ -77,14 +42,14 @@ require_once __DIR__ . '/common/header.php';
           <?php foreach ($courses as $course): ?>
             <?php // Todo lo que viene de la base de datos se escapa con htmlspecialchars para evitar XSS ?>
             <tr>
-              <td><?php echo htmlspecialchars($course['nombre']); ?></td>
-              <td><?php echo htmlspecialchars($course['codigo']); ?></td>
+              <td><?php echo e($course['nombre']); ?></td>
+              <td><?php echo e($course['codigo']); ?></td>
               <td>
-                <?php echo htmlspecialchars($course['carrera_nombre']); ?>
+                <?php echo e($course['carrera_nombre']); ?>
                 <small class="text-muted">(ID <?php echo (int) $course['carrera_id']; ?>)</small>
               </td>
               <td><?php echo (int) $course['creditos']; ?></td>
-              <td><?php echo htmlspecialchars($course['descripcion']); ?></td>
+              <td><?php echo e($course['descripcion']); ?></td>
               <td class="text-nowrap">
                 <a href="/pages/course_form.php?id=<?php echo (int) $course['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
 
@@ -101,4 +66,4 @@ require_once __DIR__ . '/common/header.php';
       </table>
     </div>
   </div>
-<?php require_once __DIR__ . '/common/footer.php'; ?>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
